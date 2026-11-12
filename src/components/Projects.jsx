@@ -1,11 +1,46 @@
 import { useState } from 'react'
 import Section from './Section'
-import { projects } from '../data/cv'
+import { lexiqamusSite, projects } from '../data/cv'
+
+function ProjectVisual({ project }) {
+  if (project.image) {
+    return (
+      <div className="project__visual linked">
+        <img
+          src={project.image}
+          alt={project.imageAlt ?? ''}
+          width={1400}
+          height={1260}
+          sizes="(max-width: 768px) 100vw, 542px"
+          loading="lazy"
+          decoding="async"
+          data-source="client"
+          data-subject="lexiqamus-interface"
+          onError={(e) => {
+            const img = e.currentTarget
+            if (lexiqamusSite.imageRemote && img.src !== lexiqamusSite.imageRemote) {
+              img.src = lexiqamusSite.imageRemote
+            }
+          }}
+        />
+      </div>
+    )
+  }
+  if (project.diagram) {
+    return (
+      <div className="project__diagram">
+        <strong>Architecture</strong>
+        <p>{project.diagram}</p>
+      </div>
+    )
+  }
+  return null
+}
 
 function Project({ project, open, onToggle }) {
   const panelId = `project-${project.id}`
   return (
-    <li className={open ? 'project project--open' : 'project'}>
+    <li className={open ? 'project project--open linked' : 'project linked'}>
       <h3 className="project__heading">
         <button
           type="button"
@@ -23,6 +58,7 @@ function Project({ project, open, onToggle }) {
       <div className="project__panel" id={panelId} role="region" aria-label={`${project.name} details`}>
         <div className="project__panel-inner">
           <div className="project__details prose">
+            <ProjectVisual project={project} />
             <h4>Context</h4>
             <p>{project.context}</p>
             <h4>What I built</h4>
@@ -64,7 +100,7 @@ export default function Projects() {
             key={project.id}
             project={project}
             open={openId === project.id}
-            onToggle={() => setOpenId(openId === project.id ? null : project.id)}
+            onToggle={() => setOpenId(project.id)}
           />
         ))}
       </ul>

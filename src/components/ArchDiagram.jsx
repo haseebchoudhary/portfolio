@@ -185,7 +185,7 @@ export default function ArchDiagram() {
                   x2={b.sx}
                   y2={b.sy}
                 />
-                {!reduced && <circle className="arch__packet" cx={px} cy={py} r="3.4" />}
+                {!reduced && <circle className="arch__packet" cx={px} cy={py} r="4.2" opacity="0.9" />}
               </g>
             )
           })}
@@ -209,10 +209,6 @@ export default function ArchDiagram() {
           })}
         </svg>
       </div>
-      <figcaption className="arch__caption">
-        The shape of the Rails and React systems I build. Move the pointer across the diagram to
-        turn it.
-      </figcaption>
     </figure>
   )
 }

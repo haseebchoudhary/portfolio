@@ -3,3 +3,12 @@ dist/
 .env
 .env.*
 graft/
+.cursor/skills/
+
+# tasteskill local dealer/check output (not for GitHub)
+.taste-skill/
+**/.taste-skill/
+shots/
+
+# mistaken nested init artefact
+flow/

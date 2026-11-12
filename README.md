@@ -1,36 +1,30 @@
 # Haseeb Choudhary: portfolio
 
-Vite + React. No other runtime dependencies. The hero diagram is plain SVG with a small 3D projection written in `src/components/ArchDiagram.jsx`.
+Vite + React portfolio with tasteskill layout: dark software theme, WebGL contour ground in the hero, and a 3D-projected Rails architecture diagram.
 
 ## Run
 
 ```bash
 npm install
-npm run dev      # local development
-npm run build    # production build in dist/
-npm run preview  # serve the build locally
+npm run dev
+npm run build
+npm run preview   # serves at /portfolio/ (matches GitHub Pages)
 ```
 
-## Before you publish
+## Content
 
-1. Open `src/data/cv.js` and replace the placeholders: `email`, `whatsapp`, `whatsappDisplay`.
-2. Put your CV at `public/cv.pdf`. Both "Download CV" buttons point to it.
-3. In `index.html`, replace `https://your-domain.com` in the canonical and Open Graph tags.
-4. Optional: add a 1200x630 `public/og.png` and an `og:image` meta tag for link previews.
+All copy lives in `src/data/cv.js`.
 
-## Editing content
+## Assets
 
-Every piece of text lives in `src/data/cv.js`: hero copy, about, experience, education, skills and projects. Components only read from that file.
+- **LexiQamus imagery:** `public/projects/lexiqamus-smart-results.jpg` (remote URL fallback in `Projects.jsx`).
+- **CV:** `public/cv.pdf` for Download CV links.
+- **About photo:** stand-in desk image in `public/taste/img/` (credit line in footer).
 
-## Design tokens
+## Design kit
 
-Colours, type and spacing are CSS variables at the top of `src/styles.css`. Fonts are Archivo (display, variable width) and Newsreader (text), loaded from Google Fonts in `index.html`.
+Vendored under `src/taste/`: `motion.css`, `effects/fx.js`, and `contour-lines` shader. Deal history is in `.taste-skill/`.
 
 ## Deploy
 
-Vercel and Netlify both detect Vite. Build command `npm run build`, output directory `dist`.
-
-## Notes
-
-- GitHub activity is fetched in the browser from the public GitHub API (`haseebchoudhary`). Unauthenticated requests are rate limited, so the section falls back to a link if the request fails.
-- Motion respects `prefers-reduced-motion`: the diagram stops rotating and packets are hidden.
+`npm run deploy` builds and pushes `dist/` to the `gh-pages` branch (base path `/portfolio/`).

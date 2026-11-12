@@ -21,12 +21,15 @@ export default function Contact() {
         </div>
         <ul className="contact__links">
           <li>
-            <a href={`https://wa.me/${person.whatsapp}`} target="_blank" rel="noreferrer noopener">
-              WhatsApp {person.whatsappDisplay}
-            </a>
-          </li>
-          <li>
             <a href={`https://github.com/${person.github}`} target="_blank" rel="noreferrer noopener">
+              <img
+                className="contact__gh"
+                src={`${import.meta.env.BASE_URL}icons/github.svg`}
+                alt=""
+                width={20}
+                height={20}
+                decoding="async"
+              />
               GitHub {person.github}
             </a>
           </li>

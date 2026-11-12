@@ -1,14 +1,18 @@
 import { useEffect, useRef } from 'react'
 import Section from './Section'
 import { experience } from '../data/cv'
+import { usePrefersReducedMotion } from '../hooks'
 
 export default function Experience() {
   const listRef = useRef(null)
+  const reduced = usePrefersReducedMotion()
 
-  // The accent rule fills as the reader scrolls through the timeline.
   useEffect(() => {
     const list = listRef.current
-    if (!list) return undefined
+    if (!list || reduced) {
+      list?.style.setProperty('--progress', '1')
+      return undefined
+    }
 
     let frame = 0
     const update = () => {
@@ -30,7 +34,7 @@ export default function Experience() {
       window.removeEventListener('resize', onScroll)
       if (frame) cancelAnimationFrame(frame)
     }
-  }, [])
+  }, [reduced])
 
   return (
     <Section id="experience" title="Experience">
@@ -42,7 +46,16 @@ export default function Experience() {
               <h3 className="timeline__role">
                 {job.role}, {job.org}
               </h3>
-              <p className="timeline__project">Project: {job.project}</p>
+              <p className="timeline__project">
+                Project:{' '}
+                {job.projectUrl ? (
+                  <a href={job.projectUrl} target="_blank" rel="noreferrer noopener">
+                    {job.project}
+                  </a>
+                ) : (
+                  job.project
+                )}
+              </p>
               <ul className="timeline__points prose">
                 {job.points.map((point) => (
                   <li key={point}>{point}</li>
