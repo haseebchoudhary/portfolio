@@ -12,7 +12,7 @@ export const person = {
   whatsappDisplay: '+92 300 0000000',
   github: 'haseebchoudhary',
   // Put your PDF at public/cv.pdf
-  cvPath: '/cv.pdf',
+  cvPath: `${import.meta.env.BASE_URL}cv.pdf`,
   availability: 'Open to full-time roles and freelance projects.',
   revision: 'November 2026',
 }
