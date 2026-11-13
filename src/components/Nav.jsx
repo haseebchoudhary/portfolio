@@ -13,7 +13,16 @@ export default function Nav() {
     <header className="nav">
       <div className="wrap nav__inner">
         <a className="nav__name" href="#top">
-          {person.name}
+          <img
+            className="nav__avatar"
+            src={person.photo}
+            width={40}
+            height={40}
+            alt=""
+            aria-hidden="true"
+            decoding="async"
+          />
+          <span>{person.name}</span>
         </a>
         <nav className="nav__menu" aria-label="Primary">
           <ul className="nav__links">

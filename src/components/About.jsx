@@ -1,9 +1,5 @@
 import Section from './Section'
-import { about, education } from '../data/cv'
-
-const base = import.meta.env.BASE_URL
-const photoSrc = `${base}taste/img/photo-d183.webp`
-const photoSrcSet = `${base}taste/img/photo-d183-500.webp 500w, ${base}taste/img/photo-d183-960.webp 960w, ${base}taste/img/photo-d183.webp 1280w`
+import { about, education, person } from '../data/cv'
 
 export default function About() {
   return (
@@ -40,16 +36,14 @@ export default function About() {
         <figure className="about__figure m-zoom linked">
           <img
             className="about__photo"
-            src={photoSrc}
-            srcSet={photoSrcSet}
-            sizes="(max-width: 1000px) 100vw, 320px"
-            width={1280}
-            height={853}
-            alt="Notebook and pencil on a wooden desk, stock photograph"
+            src={person.photo}
+            width={900}
+            height={900}
+            alt={person.photoAlt}
             loading="lazy"
             decoding="async"
-            data-source="library-057"
-            data-subject="desk"
+            data-source="client"
+            data-subject="portrait"
           />
         </figure>
       </div>

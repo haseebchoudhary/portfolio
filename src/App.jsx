@@ -7,9 +7,6 @@ import Skills from './components/Skills'
 import Contact from './components/Contact'
 import { person } from './data/cv'
 
-const PHOTO_CREDIT =
-  'Photo by Jan Kahánek, CC0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Tabel_day_1_(Unsplash).jpg)'
-
 export default function App() {
   return (
     <>
@@ -29,7 +26,6 @@ export default function App() {
         <p>
           {person.name}. Built with Vite and React.
         </p>
-        <p className="footer__credits">{PHOTO_CREDIT}</p>
       </footer>
     </>
   )

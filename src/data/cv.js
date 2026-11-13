@@ -10,6 +10,8 @@ export const person = {
   phoneTel: '+923034730398',
   github: 'haseebchoudhary',
   cvPath: `${import.meta.env.BASE_URL}cv.pdf`,
+  photo: `${import.meta.env.BASE_URL}profile/photo.png`,
+  photoAlt: 'Portrait of Haseeb Choudhary',
   availability: 'Open to full-time roles and freelance projects.',
   revision: 'November 2026',
 }
