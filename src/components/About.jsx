@@ -33,18 +33,27 @@ export default function About() {
             </ul>
           </div>
         </div>
-        <figure className="about__figure m-zoom linked">
-          <img
-            className="about__photo"
-            src={person.photo}
-            width={900}
-            height={900}
-            alt={person.photoAlt}
-            loading="lazy"
-            decoding="async"
-            data-source="client"
-            data-subject="portrait"
-          />
+        <figure className="about__figure">
+          <div className="about__photo-wrap m-zoom">
+            <img
+              className="about__photo"
+              src={person.photo}
+              width={900}
+              height={900}
+              alt={person.photoAlt}
+              loading="lazy"
+              decoding="async"
+              data-source="client"
+              data-subject="portrait"
+            />
+          </div>
+          <figcaption className="about__profile-card">
+            <p className="about__profile-name">{person.name}</p>
+            <p className="about__profile-role">{person.role}</p>
+            <p className="about__profile-line">{person.profileLine}</p>
+            <p className="about__profile-stack">{person.profileStack}</p>
+            <p className="about__profile-availability">{person.availability}</p>
+          </figcaption>
         </figure>
       </div>
     </Section>

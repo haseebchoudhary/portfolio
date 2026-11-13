@@ -17,7 +17,7 @@ All copy lives in `src/data/cv.js`.
 
 ## Assets
 
-- **LexiQamus imagery:** `public/projects/lexiqamus-smart-results.jpg` (remote URL fallback in `Projects.jsx`).
+- **LexiQamus gallery:** seven JPGs in `public/projects/lexiqamus-*.jpg` (see `src/data/cv.js`).
 - **CV:** `public/cv.pdf` for Download CV links.
 - **About photo:** stand-in desk image in `public/taste/img/` (credit line in footer).
 

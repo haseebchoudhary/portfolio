@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 function Chevron({ direction }) {
   return (
@@ -23,16 +23,26 @@ function Chevron({ direction }) {
 
 export default function ProjectGallery({ pages, label }) {
   const [index, setIndex] = useState(0)
+  const [step, setStep] = useState(1)
   const last = pages.length - 1
 
   const go = useCallback(
     (delta) => {
+      setStep(delta)
       setIndex((i) => Math.min(last, Math.max(0, i + delta)))
     },
     [last],
   )
 
   const page = pages[index]
+
+  useEffect(() => {
+    for (const i of [index - 1, index + 1]) {
+      if (i < 0 || i > last) continue
+      const img = new Image()
+      img.src = pages[i].src
+    }
+  }, [index, last, pages])
 
   const onKeyDown = (e) => {
     if (e.key === 'ArrowLeft') {
@@ -61,9 +71,10 @@ export default function ProjectGallery({ pages, label }) {
           <div className="project__gallery-media m-zoom">
             <img
               key={page.src}
+              data-step={step > 0 ? 'next' : 'prev'}
               src={page.src}
               alt={page.alt}
-              width={1440}
+              width={1420}
               height={900}
               loading={index === 0 ? 'eager' : 'lazy'}
               decoding="async"

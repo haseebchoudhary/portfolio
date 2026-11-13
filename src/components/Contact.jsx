@@ -1,5 +1,5 @@
 import Section from './Section'
-import { person } from '../data/cv'
+import { githubRepos, person } from '../data/cv'
 
 export default function Contact() {
   return (
@@ -43,6 +43,30 @@ export default function Contact() {
             </a>
           </li>
         </ul>
+        <div className="contact__repos">
+          <h3 className="contact__repos-title">GitHub highlights</h3>
+          <ul className="repo-list">
+            {githubRepos.map((repo) => (
+              <li key={repo.name}>
+                <a
+                  className="link"
+                  href={repo.pullsUrl ?? repo.url}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  {repo.owner}/{repo.name}
+                </a>
+                <span className="repo-list__stats">
+                  {repo.pullRequests != null
+                    ? `${repo.pullRequests} pull requests`
+                    : `${repo.branches} branches · ${repo.commits} commits`}
+                  {repo.private ? ' · private' : ''}
+                </span>
+                <span className="repo-list__note muted">{repo.note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </Section>
   )

@@ -70,6 +70,36 @@ function Project({ project, open, onToggle }) {
                 <li key={item}>{item}</li>
               ))}
             </ul>
+            {project.contributions?.length > 0 && (
+              <ul className="project__contrib">
+                {project.contributions.map((repo) => (
+                  <li key={repo.name}>
+                    <a href={repo.pullsUrl} target="_blank" rel="noreferrer noopener">
+                      evolvingbits/{repo.name}
+                    </a>
+                    {' — '}
+                    <strong>{repo.pullRequests}</strong> pull requests
+                  </li>
+                ))}
+              </ul>
+            )}
+            {project.repoStats && (
+              <p className="project__repo-stats">
+                GitHub:{' '}
+                {project.repoStats.pullRequests != null ? (
+                  <>
+                    <strong>{project.repoStats.pullRequests}</strong> pull requests
+                  </>
+                ) : (
+                  <>
+                    <strong>{project.repoStats.branches} branches</strong>
+                    {' · '}
+                    <strong>{project.repoStats.commits} commits</strong>
+                    {project.repoStats.private ? ' (private repo)' : ' on default branch'}
+                  </>
+                )}
+              </p>
+            )}
             {project.link && (
               <p>
                 <a href={project.link.href} target="_blank" rel="noreferrer noopener">
