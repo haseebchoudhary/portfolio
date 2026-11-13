@@ -1008,13 +1008,21 @@ a:focus-visible {
 }
 
 .project__panel {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s ease;
+  display: none;
 }
 
 .project--open .project__panel {
-  grid-template-rows: 1fr;
+  display: block;
+  animation: project-panel-in 0.22s ease;
+}
+
+@keyframes project-panel-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .project__panel-visual {
@@ -1247,21 +1255,13 @@ a:focus-visible {
   display: grid;
   grid-template-columns: 1fr;
   gap: 28px;
-  overflow: visible;
+  overflow: hidden;
   min-height: 0;
-  visibility: hidden;
-  transition: visibility 0s linear 0.35s;
+  padding-bottom: 36px;
 }
 
 .project--open {
-  background: color-mix(in oklab, var(--surface) 55%, transparent);
   border-color: color-mix(in oklab, var(--accent) 18%, var(--rule));
-}
-
-.project--open .project__panel-inner {
-  visibility: visible;
-  transition-delay: 0s;
-  padding-bottom: 36px;
 }
 
 .project__details h4,
@@ -1495,7 +1495,9 @@ a:focus-visible {
   .gallery-arrow:active:not(:disabled) {
     transform: translateY(-50%);
   }
-  .project__panel,
+  .project--open .project__panel {
+    animation: none;
+  }
   .project__icon::before,
   .project__icon::after,
   .btn {

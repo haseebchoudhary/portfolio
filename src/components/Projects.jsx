@@ -52,7 +52,14 @@ function Project({ project, open, onToggle }) {
           <span className="project__icon" aria-hidden="true" />
         </button>
       </h3>
-      <div className="project__panel" id={panelId} role="region" aria-label={`${project.name} details`}>
+      <div
+        className="project__panel"
+        id={panelId}
+        role="region"
+        aria-label={`${project.name} details`}
+        hidden={!open}
+      >
+        {open ? (
         <div className="project__panel-inner">
           {project.gallery?.length ? (
             <div className="project__panel-visual">
@@ -118,6 +125,7 @@ function Project({ project, open, onToggle }) {
             </div>
           </div>
         </div>
+        ) : null}
       </div>
     </li>
   )

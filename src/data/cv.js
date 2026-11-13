@@ -156,11 +156,11 @@ export const education = [
 export const skills = [
   {
     group: 'Languages and frameworks',
-    items: ['Ruby', 'Ruby on Rails', 'Laravel', 'Django', 'JavaScript'],
+    items: ['Ruby', 'Ruby on Rails', 'Laravel', 'Django', 'JavaScript', 'React.js'],
   },
   {
     group: 'Frontend',
-    items: ['React', 'HTML and CSS', 'Bootstrap 5', 'ERB', 'Stimulus'],
+    items: ['React.js', 'HTML and CSS', 'Bootstrap 5', 'ERB', 'Stimulus'],
   },
   {
     group: 'Databases and tools',
