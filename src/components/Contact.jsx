@@ -5,12 +5,15 @@ export default function Contact() {
   return (
     <Section id="contact" title="Contact">
       <div className="contact">
-        <p className="contact__lead">
-          {person.availability} Email is the quickest way to reach me.
-        </p>
-        <a className="contact__email" href={`mailto:${person.email}`}>
+        <p className="contact__lead">{person.availability}</p>
+        <a className="contact__email link" href={`mailto:${person.email}`}>
           {person.email}
         </a>
+        {person.phone && (
+          <a className="contact__phone link" href={`tel:${person.phoneTel}`}>
+            {person.phone}
+          </a>
+        )}
         <div className="contact__actions">
           <a className="btn" href={`mailto:${person.email}`}>
             Email me
@@ -21,11 +24,17 @@ export default function Contact() {
         </div>
         <ul className="contact__links">
           <li>
-            <a href={`https://github.com/${person.github}`} target="_blank" rel="noreferrer noopener">
+            <a
+              className="link"
+              href={`https://github.com/${person.github}`}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
               <img
                 className="contact__gh"
                 src={`${import.meta.env.BASE_URL}icons/github.svg`}
                 alt=""
+                aria-hidden="true"
                 width={20}
                 height={20}
                 decoding="async"

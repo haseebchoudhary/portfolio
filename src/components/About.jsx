@@ -37,7 +37,7 @@ export default function About() {
             </ul>
           </div>
         </div>
-        <figure className="about__figure">
+        <figure className="about__figure m-zoom linked">
           <img
             className="about__photo"
             src={photoSrc}

@@ -4,18 +4,18 @@ import fx from '../taste/effects/fx.js'
 import contourLines from '../taste/effects/contour-lines/effect.js'
 
 const FX_PARAMS = {
-  levels: 28,
-  scale: 1.4,
+  levels: 22,
+  scale: 1.35,
   lineWidth: 1,
   indexEvery: 5,
-  opacity: 0.42,
-  speed: 0.018,
-  tint: 0.55,
-  shade: 0.45,
-  edge: 0.55,
-  calm: 0.85,
-  calmX: 0.35,
-  calmY: 0.55,
+  opacity: 0.16,
+  speed: 0.014,
+  tint: 0.72,
+  shade: 0.92,
+  edge: 0.35,
+  calm: 0.9,
+  calmX: 0.4,
+  calmY: 0.5,
 }
 
 export default function HeroShader() {

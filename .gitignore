@@ -4,6 +4,7 @@ dist/
 .env.*
 graft/
 .cursor/skills/
+.kiro
 
 # tasteskill local dealer/check output (not for GitHub)
 .taste-skill/

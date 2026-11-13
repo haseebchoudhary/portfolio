@@ -2,10 +2,12 @@
 
 export const person = {
   name: 'Haseeb Choudhary',
-  role: 'Ruby on Rails and full-stack developer',
+  role: 'Ruby on Rails Developer | Full Stack Developer',
   location: 'Pakistan',
   languages: 'English and Urdu',
   email: 'haseebch211@gmail.com',
+  phone: '+92 303 4730398',
+  phoneTel: '+923034730398',
   github: 'haseebchoudhary',
   cvPath: `${import.meta.env.BASE_URL}cv.pdf`,
   availability: 'Open to full-time roles and freelance projects.',
@@ -13,35 +15,58 @@ export const person = {
 }
 
 export const hero = {
-  fact: 'Pakistan · LexiQamus · Rails 7 · November 2026',
-  headline: 'Rails full-stack engineer for teams shipping production web platforms.',
-  lede: 'I build production web applications with Ruby on Rails, React, and Stimulus. Current work: LexiQamus, a digitization and linguistic analysis platform for Ottoman Turkish dictionaries, used by university partners.',
+  fact: 'Pakistan · LexiQamus · Rails · 2026',
+  headline: 'Ruby on Rails developer for production web applications.',
+  lede: 'I build and maintain production apps across backend architecture, authentication, search, APIs, and responsive frontends—including LexiQamus, a linguistic research platform, and multi-tenant e-commerce systems. I use AI-assisted tools such as Cursor and Claude with clear prompts, human review, and the same standards as any production change.',
 }
 
 export const about = {
   paragraphs: [
-    'I am a software engineer based in Pakistan and a Ruby on Rails Developer at Evolving Bits. I joined the LexiQamus team as an intern in October 2025 and moved into a full-time role in March 2026.',
-    'My work spans frontend implementation, performance and accessibility, and research for the AI pipelines behind dictionary digitization. I also wrote the Rails and Stimulus coding standards the team uses as its reference.',
-    'I am completing a BS Software Engineering at Lahore Garrison University in 2026. My final-year project applied deep learning to stroke diagnosis from brain CT scans.',
+    'Ruby on Rails developer with hands-on experience on production web applications, including a linguistic research platform and a multi-tenant e-commerce system. I work comfortably across MVC backends, REST APIs, authentication and authorization, search, and responsive UIs.',
+    'I am a Ruby on Rails Developer at Evolving Bits (March 2026 to present), after an internship with the same team (October 2025 to January 2026).',
+    'I am completing a BS Software Engineering at Lahore Garrison University in 2026. My final-year project is an AI-based brain stroke detection system built with Django and deep learning.',
+    'For day-to-day engineering I use AI-driven tools including Cursor and Claude: scoped tasks, context from our coding rules, and review of every diff before it ships—treating assistants as accelerators, not authors.',
   ],
   facts: [
-    ['Discipline', 'Web application engineering'],
+    ['Title', 'Ruby on Rails Developer | Full Stack Developer'],
     ['Employer', 'Evolving Bits'],
     ['Based in', 'Pakistan'],
-    ['Languages', 'English and Urdu'],
-    ['Status', 'Open to full-time and freelance work'],
-    ['Revision', 'November 2026'],
+    ['Email', person.email],
+    ['Phone', person.phone],
+    ['GitHub', `github.com/${person.github}`],
   ],
 }
+
+const asset = (file) => `${import.meta.env.BASE_URL}projects/${file}`
 
 export const lexiqamusSite = {
   href: 'https://lexiqamus.com',
   label: 'lexiqamus.com',
-  image: `${import.meta.env.BASE_URL}projects/lexiqamus-smart-results.jpg`,
-  imageRemote:
-    'https://lexiqamus.com/packs/media/images/lexiqamus/innovation_announcements/smart-results-a330705e7cffde3c64edff0ccf97abd8.jpg',
+  image: asset('lexiqamus-smart-results.jpg'),
   imageAlt:
     'LexiQamus smart search results with categorized Ottoman Turkish dictionary entries and page preview.',
+  gallery: [
+    {
+      src: asset('lexiqamus-smart-results.jpg'),
+      alt: 'LexiQamus search results with categorized dictionary entries and original page preview.',
+    },
+    {
+      src: asset('lexiqamus-hareket-1.jpg'),
+      alt: 'LexiQamus headword, subheadword, and related word categories for Ottoman Turkish entries.',
+    },
+    {
+      src: asset('lexiqamus-hareket-2.jpg'),
+      alt: 'LexiQamus entry structure showing headword and related linguistic links.',
+    },
+    {
+      src: asset('lexiqamus-hareket-3.jpg'),
+      alt: 'LexiQamus dictionary entry with morphological and semantic relationships.',
+    },
+    {
+      src: asset('lexiqamus-hareket-4.jpg'),
+      alt: 'LexiQamus visual navigation from search results to the source dictionary page.',
+    },
+  ],
 }
 
 export const experience = [
@@ -52,34 +77,34 @@ export const experience = [
     project: 'LexiQamus',
     projectUrl: lexiqamusSite.href,
     points: [
-      'Fixed the Highlight stage update path by removing N+1 queries and repeated image processing, and by batching writes in a single transaction.',
-      'Leading WCAG 2.1 AA accessibility work on static sidebar pages: keyboard navigation, focus states, semantic HTML and colour contrast, driven by university licence requirements.',
-      'Built a keyboard implementation for Ottoman and Arabic input that reads physical key codes, so operating system layouts no longer intercept keystrokes.',
-      'Researching AI-assisted column detection for scanned dictionary pages with vision models, an OCR replacement, and a CAPTCHA alternative based on Cloudflare Turnstile.',
+      'Develop and maintain LexiQamus, a Rails-based dictionary and linguistic research platform, across backend and frontend.',
+      'Own authentication, advanced search, citation, CMS and admin, and API integration features.',
+      'Build and modify Rails models, controllers, and migrations; debug and ship fixes using Docker and Git and GitHub.',
+      'Use Cursor and Claude for research spikes, refactors, and documentation drafts; every change is reviewed and tested like hand-written code.',
     ],
   },
   {
     period: 'October 2025 to January 2026',
-    role: 'Intern',
+    role: 'Ruby on Rails Intern',
     org: 'Evolving Bits',
-    project: 'LexiQamus',
-    projectUrl: lexiqamusSite.href,
+    project: 'Multi-tenant e-commerce platform',
+    projectUrl: null,
     points: [
-      'Built the dictionary selector, result page category pills and jump-to-section navigation.',
-      'Shipped admin panel features, including the redesigned Dictionaries index table and Reports tab navigation.',
+      'Built a Shopify-style multi-tenant e-commerce platform in Rails with subdomain-based tenant isolation.',
+      'Delivered role-based admin and seller dashboards for products, orders, inventory, and sales metrics with a responsive Bootstrap UI.',
     ],
   },
 ]
 
 export const education = [
   {
-    period: '2022 to 2026',
+    period: '2026',
     title: 'BS Software Engineering',
     place: 'Lahore Garrison University',
-    note: 'Batch FA-22, graduating 2026. Final-year project: Stroke Diagnosis AI System.',
+    note: 'Final-year project: AI-Based Brain Stroke Detection System.',
   },
   {
-    period: 'Completed 2022',
+    period: '2022',
     title: 'FSc Pre-Engineering',
     place: 'Punjab Group of Colleges, Sialkot',
     note: '',
@@ -88,20 +113,39 @@ export const education = [
 
 export const skills = [
   {
-    group: 'Backend',
-    items: ['Ruby', 'Ruby on Rails 7', 'Devise', 'Pundit', 'Sidekiq', 'ActionCable', 'PostgreSQL', 'Redis', 'Python', 'Django'],
+    group: 'Languages and frameworks',
+    items: ['Ruby', 'Ruby on Rails', 'Laravel', 'Django', 'JavaScript'],
   },
   {
     group: 'Frontend',
-    items: ['React', 'Stimulus JS', 'JavaScript (ES6)', 'ERB', 'HTML and CSS', 'WCAG 2.1 AA accessibility', 'Vite'],
+    items: ['HTML and CSS', 'Bootstrap 5', 'ERB', 'Stimulus'],
   },
   {
-    group: 'Data and AI',
-    items: ['PyTorch', 'scikit-learn', 'Gemini and OpenAI vision APIs', 'Prompt engineering', 'Hadoop and Spark'],
+    group: 'Databases and tools',
+    items: ['PostgreSQL', 'MySQL', 'Docker', 'Git and GitHub', 'REST APIs'],
   },
   {
-    group: 'Practice',
-    items: ['Git', 'Coding standards', 'Technical R&D write-ups', 'Ticket-driven delivery', 'Multi-tenant architecture'],
+    group: 'AI-assisted development',
+    items: [
+      'Cursor',
+      'Claude',
+      'Structured prompting and context',
+      'Diff review before merge',
+    ],
+  },
+  {
+    group: 'AI and ML (project work)',
+    items: ['PyTorch', 'DenseNet-121', 'ConvNeXt-Base', 'Swin Transformer'],
+  },
+  {
+    group: 'Core competencies',
+    items: [
+      'Full-stack development',
+      'MVC architecture',
+      'Authentication and authorization',
+      'Multi-tenant applications',
+      'Debugging and performance',
+    ],
   },
 ]
 
@@ -109,51 +153,48 @@ export const projects = [
   {
     id: 'lexiqamus',
     name: 'LexiQamus',
-    summary: 'Digitization and linguistic analysis for Ottoman Turkish dictionaries.',
+    summary: 'Rails dictionary and linguistic research platform for Ottoman Turkish.',
     kind: 'Professional work at Evolving Bits',
-    stack: ['Ruby on Rails', 'Stimulus JS', 'ERB', 'Gemini and OpenAI vision models'],
+    stack: ['Ruby on Rails', 'PostgreSQL', 'Docker', 'Stimulus', 'ERB'],
     context:
-      'Scanned dictionary pages must be divided into columns, read and analysed word by word before scholars can search them. The platform has institutional university partners whose licences set accessibility requirements.',
+      'A Rails-based dictionary and linguistic research platform. I work across backend and frontend on features used in production.',
     built: [
-      'Performance fixes in the Highlight stage and a custom Ottoman keyboard layer.',
-      'Dictionary selector, result page navigation, morphological analysis icons and admin panel tables.',
-      'Research and cost-versus-accuracy documentation for AI polygon detection on scanned pages.',
-      'WCAG 2.1 AA accessibility improvements across static pages.',
+      'Authentication, advanced search, citation, CMS and admin, and API integrations.',
+      'Rails models, controllers, and migrations; fixes shipped with Docker and Git and GitHub.',
+      'Responsive UI work alongside the existing LexiQamus product at lexiqamus.com.',
+      'AI-assisted workflows with Cursor and Claude for spikes and iteration, with team coding standards applied to every output.',
     ],
     link: { label: lexiqamusSite.label, href: lexiqamusSite.href },
-    image: lexiqamusSite.image,
-    imageAlt: lexiqamusSite.imageAlt,
+    gallery: lexiqamusSite.gallery,
   },
   {
     id: 'stroke-ai',
-    name: 'Stroke Diagnosis AI System',
-    summary: 'Brain CT classification with an ensemble of deep learning models.',
+    name: 'AI-Based Brain Stroke Detection System',
+    summary: 'Multi-modal brain CT classification for Normal, Ischemic, and Hemorrhagic cases.',
     kind: 'Final-year project',
-    stack: ['Django', 'PyTorch', 'Swin Transformer', 'DenseNet', 'CNN', 'PostgreSQL'],
+    stack: ['Django', 'PostgreSQL', 'PyTorch', 'DenseNet-121', 'ConvNeXt-Base', 'Swin Transformer'],
     context:
-      'A web application that classifies brain CT scans for stroke, trained on a public Kaggle dataset and served through Django.',
+      'Final-year project: a Django application that classifies brain CT scans using deep learning, with doctor and admin workflows.',
     built: [
-      'An ensemble combining Swin Transformer, DenseNet and CNN models.',
-      'A Django application with PostgreSQL storage around the model.',
-      'Project documentation, a presentation script and a viva question bank.',
+      'Ensemble of DenseNet-121, ConvNeXt-Base, and Swin Transformer (95.2% accuracy) plus a Random Forest clinical model.',
+      'Full Django app with doctor and admin roles, patient management, CT upload, and diagnosis history.',
     ],
     link: null,
-    diagram: 'CT scans → preprocessing → ensemble models → diagnosis label → Django API',
+    diagram: 'CT upload → preprocessing → ensemble + clinical model → diagnosis label → Django app',
   },
   {
     id: 'analytics-dashboard',
-    name: 'Live E-commerce Analytics Dashboard',
-    summary: 'Real-time multi-tenant analytics for online stores.',
-    kind: 'Portfolio project, in development',
-    stack: ['Ruby on Rails 7', 'React', 'ActionCable', 'Sidekiq', 'PostgreSQL', 'Redis'],
+    name: 'E-commerce Analytics Dashboard',
+    summary: 'Admin and seller dashboards for multi-store revenue, orders, and inventory.',
+    kind: 'Rails project',
+    stack: ['Ruby on Rails', 'Bootstrap 5', 'Stimulus', 'PostgreSQL'],
     context:
-      'Rails backend with ERB and Stimulus for administration and a React front end for the live dashboard. Updates reach browsers over ActionCable.',
+      'Dashboards for isolated stores: revenue, orders, inventory, low-stock alerts, and role-based views for admins and sellers.',
     built: [
-      'Architecture, design specification and a 43-ticket backlog written before implementation.',
-      'Database schema design for multi-tenant data.',
-      'Security checklist and coding rules used as context for AI-assisted development.',
+      'Admin and seller dashboards tracking revenue, orders, and inventory across isolated stores.',
+      'Low-stock alerts and role-based views built with Bootstrap 5 and Stimulus.',
     ],
     link: null,
-    diagram: 'Store events → Rails → Sidekiq → PostgreSQL / Redis → ActionCable → React dashboard',
+    diagram: 'Store data → Rails → dashboards → admin / seller roles',
   },
 ]

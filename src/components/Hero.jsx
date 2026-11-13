@@ -8,7 +8,9 @@ export default function Hero() {
       <HeroShader />
       <div className="hero__inner wrap">
         <div className="hero__text">
-          <p className="hero__fact">{hero.fact}</p>
+          <p className="hero__fact">
+            <span className="hero__pill">{hero.fact}</span>
+          </p>
           <h1 className="hero__title" id="hero-title">
             {hero.headline}
           </h1>

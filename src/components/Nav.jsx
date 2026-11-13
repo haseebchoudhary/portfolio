@@ -19,7 +19,9 @@ export default function Nav() {
           <ul className="nav__links">
             {links.map(([label, href]) => (
               <li key={href}>
-                <a href={href}>{label}</a>
+                <a className="link" href={href}>
+                  {label}
+                </a>
               </li>
             ))}
           </ul>

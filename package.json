@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --base /portfolio/",
-    "deploy": "npm run build && npx gh-pages -d dist -m \"Deploy site\""
+    "deploy": "npm run build && npx gh-pages -d dist -m \"Deploy site\"",
+    "capture:lexiqamus": "node scripts/capture-lexiqamus.mjs",
+    "check:consistency": "node \"$HOME/.claude/skills/design-taste-frontend/scripts/consistency.mjs\" http://127.0.0.1:4173/portfolio/ --widths 1440,768,390 --rhythm-widths 1440,768,390 --page software --category \"Rails developer portfolio\" --primary \"Email me\""
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -15,6 +17,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
+    "playwright": "^1.49.1",
     "vite": "^5.4.11"
   }
 }

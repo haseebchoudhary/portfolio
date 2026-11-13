@@ -1,8 +1,12 @@
 import { useState } from 'react'
 import Section from './Section'
-import { lexiqamusSite, projects } from '../data/cv'
+import { projects } from '../data/cv'
+import ProjectGallery from './ProjectGallery'
 
-function ProjectVisual({ project }) {
+function ProjectVisual({ project, variant }) {
+  if (variant === 'gallery' && project.gallery?.length) {
+    return <ProjectGallery pages={project.gallery} label={project.name} />
+  }
   if (project.image) {
     return (
       <div className="project__visual linked">
@@ -15,13 +19,6 @@ function ProjectVisual({ project }) {
           loading="lazy"
           decoding="async"
           data-source="client"
-          data-subject="lexiqamus-interface"
-          onError={(e) => {
-            const img = e.currentTarget
-            if (lexiqamusSite.imageRemote && img.src !== lexiqamusSite.imageRemote) {
-              img.src = lexiqamusSite.imageRemote
-            }
-          }}
         />
       </div>
     )
@@ -57,9 +54,15 @@ function Project({ project, open, onToggle }) {
       </h3>
       <div className="project__panel" id={panelId} role="region" aria-label={`${project.name} details`}>
         <div className="project__panel-inner">
-          <div className="project__details prose">
-            <ProjectVisual project={project} />
-            <h4>Context</h4>
+          {project.gallery?.length ? (
+            <div className="project__panel-visual">
+              <ProjectVisual project={project} variant="gallery" />
+            </div>
+          ) : null}
+          <div className="project__panel-body">
+            <div className="project__details prose">
+              {!project.gallery?.length ? <ProjectVisual project={project} /> : null}
+              <h4>Context</h4>
             <p>{project.context}</p>
             <h4>What I built</h4>
             <ul>
@@ -74,14 +77,15 @@ function Project({ project, open, onToggle }) {
                 </a>
               </p>
             )}
-          </div>
-          <div className="project__stack">
-            <h4>Stack</h4>
-            <ul>
-              {project.stack.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            </div>
+            <div className="project__stack">
+              <h4>Stack</h4>
+              <ul>
+                {project.stack.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -93,7 +97,7 @@ export default function Projects() {
   const [openId, setOpenId] = useState(projects[0].id)
 
   return (
-    <Section id="projects" title="Projects">
+    <Section id="projects" title="Projects" tall>
       <ul className="projects">
         {projects.map((project) => (
           <Project
