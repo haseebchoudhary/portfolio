@@ -5,17 +5,16 @@
   <title>Haseeb Choudhary — CV</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <!-- static (non-variable) families only: Chrome embeds them as real TrueType, so the PDF stays sharp -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     @page { size: A4; margin: 0; }
     :root {
-      --navy: #0d1424;
-      --navy-2: #151d33;
+      --ink: #15171c;
+      --body: #2b2f38;
+      --muted: #666b78;
+      --rule: #dcdee4;
       --accent: #c73e2e;
-      --ink: #1a1d27;
-      --muted: #5b6070;
-      --rule: #e4e6ec;
-      --side: #f4f5f8;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width: 210mm; height: 297mm; }
@@ -23,263 +22,140 @@
       font-family: 'Lato', system-ui, sans-serif;
       font-size: 9pt;
       line-height: 1.45;
-      color: var(--ink);
+      color: var(--body);
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
     a { color: inherit; text-decoration: none; }
-    .page { display: flex; flex-direction: column; height: 297mm; overflow: hidden; }
+    .page { height: 297mm; padding: 11mm 16mm 8mm; display: flex; flex-direction: column; overflow: hidden; }
+    .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
 
     /* header */
-    header {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 26px;
-      padding: 22px 38px 20px;
-      background: var(--navy);
-      color: #fff;
-      overflow: hidden;
-    }
-    header::after {
-      content: '';
-      position: absolute;
-      right: -70px; top: -90px;
-      width: 260px; height: 260px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(199,62,46,.38), transparent 68%);
-    }
-    .photo {
-      flex: none;
-      width: 104px; height: 104px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent);
-      box-shadow: 0 0 0 4px rgba(255,255,255,.08);
-      position: relative; z-index: 1;
-    }
-    .id { position: relative; z-index: 1; min-width: 0; flex: 1; }
-    h1 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 27pt;
-      line-height: 1.1;
-      letter-spacing: -.01em;
-    }
-    .role {
-      margin-top: 4px;
-      font-size: 8.6pt;
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: #ff9f93;
-    }
-    .contact {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: auto auto;
-      justify-content: start;
-      gap: 5px 30px;
-      font-size: 8.6pt;
-      color: #dfe3ee;
-    }
-    .contact span { color: #8d96ad; margin-right: 6px; font-weight: 500; }
-    .bar { height: 4px; background: linear-gradient(90deg, var(--accent), #ff8a6b 55%, var(--navy-2)); }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 11px; border-bottom: 1.5px solid var(--ink); }
+    h1 { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 26pt; line-height: 1.05; letter-spacing: -.02em; color: var(--ink); }
+    .role { margin-top: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 8.8pt; font-weight: 500; letter-spacing: .04em; color: var(--accent); }
+    .contact { margin-top: 10px; font-size: 8.6pt; color: var(--muted); display: flex; flex-wrap: wrap; gap: 2px 11px; }
+    .contact a { color: var(--body); }
+    .photo { flex: none; width: 68px; height: 68px; border-radius: 50%; object-fit: cover; border: 1px solid var(--rule); }
 
-    /* stats */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-bottom: 1px solid var(--rule);
-    }
-    .stat { padding: 8px 38px; border-right: 1px solid var(--rule); }
-    .stat:last-child { border-right: 0; }
-    .stat b {
-      display: block;
-      font-family: 'Poppins', sans-serif;
-      font-size: 13pt;
-      line-height: 1.2;
-      color: var(--navy);
-    }
-    .stat small { font-size: 7.6pt; color: var(--muted); letter-spacing: .04em; }
-
-    /* body */
-    .cols { flex: 1; display: grid; grid-template-columns: 1.62fr 1fr; min-height: 0; }
-    main { padding: 16px 28px 14px 38px; }
-    aside { padding: 16px 34px 14px 24px; background: var(--side); border-left: 1px solid var(--rule); }
-
+    /* sections */
+    section { margin-top: 14px; }
     h2 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 9.4pt;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--navy);
-      margin-bottom: 9px;
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8.2pt; font-weight: 500;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--ink);
     }
-    h2::after {
-      content: '';
-      display: block;
-      width: 26px; height: 3px;
-      margin-top: 4px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
-    section + section { margin-top: 12px; }
+    h2::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+    h2::before { content: ''; width: 6px; height: 6px; background: var(--accent); }
+
+    p { max-width: 100%; }
     p + p { margin-top: 5px; }
+    b, strong { font-weight: 700; color: var(--ink); }
 
-    .job { margin-bottom: 11px; }
-    .job:last-child { margin-bottom: 0; }
-    .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
-    .job-title { font-weight: 600; font-size: 10.2pt; color: var(--navy); }
-    .job-date {
-      flex: none;
-      font-size: 7.6pt; font-weight: 600;
-      letter-spacing: .06em;
-      color: var(--accent);
-      text-transform: uppercase;
-    }
-    .job-org { font-weight: 500; color: var(--muted); font-size: 8.8pt; margin-bottom: 3px; }
-    ul.b { list-style: none; }
-    ul.b li { position: relative; padding-left: 12px; margin-bottom: 3px; }
-    ul.b li::before {
-      content: '';
-      position: absolute; left: 0; top: .62em;
-      width: 5px; height: 5px; border-radius: 1px;
-      background: var(--accent);
-    }
-    .link { color: var(--accent); font-weight: 500; }
+    /* skills: categorized text rows */
+    .skills { display: grid; grid-template-columns: 112px 1fr; gap: 4px 14px; }
+    .skills dt { font-family: 'IBM Plex Mono', monospace; font-size: 8.2pt; color: var(--muted); padding-top: 1px; }
+    .skills dd { color: var(--body); }
 
-    .proj { margin-bottom: 10px; }
-    .proj:last-child { margin-bottom: 0; }
-    .proj-name { font-weight: 600; font-size: 9.6pt; color: var(--navy); }
-    .proj-meta { font-size: 8.2pt; color: var(--muted); }
-
-    /* sidebar */
-    .group { margin-bottom: 9px; }
-    .group-label {
-      font-size: 7.2pt; font-weight: 600;
-      letter-spacing: .12em; text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-    .chips { display: flex; flex-wrap: wrap; gap: 4px; }
-    .chip {
-      padding: 2px 8px;
-      border: 1px solid #d5d8e2;
-      border-radius: 99px;
-      background: #fff;
-      font-size: 7.9pt; font-weight: 500;
-    }
-    .chips.ai .chip { background: var(--navy); border-color: var(--navy); color: #fff; }
-    .edu { margin-bottom: 8px; }
-    .edu b { display: block; font-size: 9.2pt; color: var(--navy); }
-    .edu span { display: block; color: var(--muted); font-size: 8.4pt; }
-    .edu em { font-style: normal; font-size: 8pt; font-weight: 600; color: var(--accent); }
+    /* entries */
+    .entry { margin-bottom: 7px; }
+    .entry:last-child { margin-bottom: 0; }
+    .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .title { font-weight: 700; font-size: 10.4pt; color: var(--ink); }
+    .org { color: var(--muted); font-weight: 400; }
+    .date { flex: none; font-family: 'IBM Plex Mono', monospace; font-size: 8.2pt; color: var(--muted); }
+    .stack { margin-top: 1px; font-family: 'IBM Plex Mono', monospace; font-size: 8.2pt; color: var(--muted); }
+    ul { list-style: none; margin-top: 4px; }
+    li { position: relative; padding-left: 13px; margin-bottom: 2.5px; }
+    li::before { content: ''; position: absolute; left: 1px; top: .66em; width: 5px; height: 1.5px; background: var(--accent); }
+    .link { color: var(--ink); border-bottom: 1px solid var(--rule); }
   </style>
 </head>
 <body>
   <div class="page">
     <header>
-      <img class="photo" src="photo.png" alt="Haseeb Choudhary" />
-      <div class="id">
+      <div>
         <h1>Haseeb Choudhary</h1>
-        <p class="role">Ruby on Rails Developer &nbsp;|&nbsp; Full Stack Developer</p>
+        <p class="role">Ruby on Rails Developer · Full Stack · PostgreSQL · Stimulus · Docker</p>
         <div class="contact">
-          <a href="mailto:haseebch211@gmail.com"><span>Email</span>haseebch211@gmail.com</a>
-          <a href="tel:+923034730398"><span>Phone</span>+92 303 4730398</a>
-          <a href="https://github.com/haseebchoudhary"><span>GitHub</span>github.com/haseebchoudhary</a>
-          <a href="https://lexiqamus.com/lexiqamus"><span>Live work</span>lexiqamus.com/lexiqamus</a>
+          <a href="mailto:haseebch211@gmail.com">haseebch211@gmail.com</a>
+          <a href="tel:+923034730398">+92 303 4730398</a>
+          <a href="https://github.com/haseebchoudhary">github.com/haseebchoudhary</a>
+          <a href="https://lexiqamus.com/lexiqamus">lexiqamus.com/lexiqamus</a>
+          <span>Pakistan</span>
         </div>
       </div>
+      <img class="photo" src="photo.png" alt="Haseeb Choudhary" />
     </header>
-    <div class="bar"></div>
 
-    <div class="stats">
-      <div class="stat"><b>Production Rails</b><small>LexiQamus · Evolving Bits</small></div>
-      <div class="stat"><b>Multi-tenant</b><small>Subdomain tenant isolation</small></div>
-      <div class="stat"><b>95.2% accuracy</b><small>Stroke CT classification (FYP)</small></div>
-    </div>
+    <section>
+      <h2>Summary</h2>
+      <p>Ruby on Rails developer with hands-on experience building and maintaining production web applications, including <b>LexiQamus</b>, a linguistic research platform, and a multi-tenant e-commerce system. Comfortable across backend architecture, authentication, search, APIs, and responsive frontend development.</p>
+      <p>Works with AI-driven tools (<b>Cursor, Claude, Codex</b>) for spikes, refactors, and documentation, using scoped prompts and reviewing every diff before it ships.</p>
+    </section>
 
-    <div class="cols">
-      <main>
-        <section>
-          <h2>Profile</h2>
-          <p>Ruby on Rails developer with hands-on experience building and maintaining production web applications, including <b>LexiQamus</b>, a linguistic research platform, and a multi-tenant e-commerce system. Comfortable across backend architecture, authentication, search, APIs, and responsive frontend development.</p>
-          <p>Uses AI-driven tools — <b>Cursor, Claude, and Codex</b> — for spikes, refactors, and documentation, with scoped prompts and review of every diff before it ships.</p>
-        </section>
+    <section>
+      <h2>Technical skills</h2>
+      <dl class="skills">
+        <dt>Languages</dt><dd>Ruby, JavaScript, Python (project work)</dd>
+        <dt>Frameworks</dt><dd>Ruby on Rails, Laravel, Django</dd>
+        <dt>Frontend</dt><dd>HTML/CSS, Bootstrap 5, ERB, Stimulus</dd>
+        <dt>Data &amp; tools</dt><dd>PostgreSQL, MySQL, Docker, Git/GitHub, REST APIs</dd>
+        <dt>AI tools</dt><dd>Cursor, Claude, Codex</dd>
+        <dt>AI/ML</dt><dd>PyTorch, DenseNet-121, ConvNeXt-Base, Swin Transformer</dd>
+        <dt>Practice</dt><dd>MVC architecture, authentication &amp; authorization, multi-tenant applications, debugging &amp; performance</dd>
+      </dl>
+    </section>
 
-        <section>
-          <h2>Experience</h2>
-          <div class="job">
-            <div class="job-head"><span class="job-title">Ruby on Rails Developer</span><span class="job-date">Mar 2026 – Present</span></div>
-            <div class="job-org">Evolving Bits · LexiQamus</div>
-            <ul class="b">
-              <li>Develop and maintain LexiQamus, a Rails-based dictionary and linguistic research platform, across backend and frontend — <a class="link" href="https://lexiqamus.com/lexiqamus">lexiqamus.com/lexiqamus</a>.</li>
-              <li>Own authentication, advanced search, citation, CMS/admin, and API integration features.</li>
-              <li>Build and modify Rails models, controllers, and migrations; debug and ship fixes using Docker and Git/GitHub.</li>
-            </ul>
-          </div>
-          <div class="job">
-            <div class="job-head"><span class="job-title">Ruby on Rails Intern</span><span class="job-date">Oct 2025 – Jan 2026</span></div>
-            <div class="job-org">Evolving Bits</div>
-            <ul class="b">
-              <li>Built a Shopify-style multi-tenant e-commerce platform in Rails with subdomain-based tenant isolation.</li>
-              <li>Delivered role-based admin and seller dashboards for products, orders, inventory, and sales metrics with a responsive Bootstrap UI.</li>
-            </ul>
-          </div>
-        </section>
+    <section>
+      <h2>Experience</h2>
+      <div class="entry">
+        <div class="row"><span class="title">Ruby on Rails Developer <span class="org">· Evolving Bits</span></span><span class="date">Mar 2026 – Present</span></div>
+        <ul>
+          <li>Develop and maintain <b>LexiQamus</b>, a Rails-based dictionary and linguistic research platform, across backend and frontend (<a class="link" href="https://lexiqamus.com/lexiqamus">lexiqamus.com/lexiqamus</a>).</li>
+          <li>Own authentication, advanced search, citation, CMS/admin, and API integration features.</li>
+          <li>Build and modify Rails models, controllers, and migrations; debug and ship fixes using Docker and Git/GitHub.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="row"><span class="title">Ruby on Rails Intern <span class="org">· Evolving Bits</span></span><span class="date">Oct 2025 – Jan 2026</span></div>
+        <ul>
+          <li>Built a Shopify-style multi-tenant e-commerce platform in Rails with subdomain-based tenant isolation.</li>
+          <li>Delivered role-based admin and seller dashboards for products, orders, inventory, and sales metrics with a responsive Bootstrap UI.</li>
+        </ul>
+      </div>
+    </section>
 
-        <section>
-          <h2>Projects</h2>
-          <div class="proj">
-            <div class="proj-name">LexiQamus <span class="proj-meta">· Rails · Docker · Git/GitHub</span></div>
-            <ul class="b"><li>Rails-based dictionary and linguistic research platform. Live at <a class="link" href="https://lexiqamus.com/lexiqamus">lexiqamus.com/lexiqamus</a>.</li></ul>
-          </div>
-          <div class="proj">
-            <div class="proj-name">AI-Based Brain Stroke Detection System <span class="proj-meta">· Final Year Project</span></div>
-            <div class="proj-meta" style="margin-bottom:3px">Django · PostgreSQL · Deep Learning</div>
-            <ul class="b">
-              <li>Multi-modal diagnosis system classifying brain CT scans as Normal, Ischemic, or Hemorrhagic using an ensemble of DenseNet-121, ConvNeXt-Base, and Swin Transformer (<b>95.2% accuracy</b>), plus a Random Forest clinical model.</li>
-              <li>Developed the full Django application, including doctor/admin roles, patient management, CT upload, and diagnosis history.</li>
-            </ul>
-          </div>
-          <div class="proj">
-            <div class="proj-name">E-commerce Analytics Dashboard <span class="proj-meta">· Rails · Bootstrap 5 · Stimulus</span></div>
-            <ul class="b"><li>Admin and seller dashboards tracking revenue, orders, and inventory across isolated stores, with low-stock alerts and role-based views.</li></ul>
-          </div>
-        </section>
-      </main>
+    <section>
+      <h2>Projects</h2>
+      <div class="entry">
+        <div class="row"><span class="title">LexiQamus</span><span class="date">Production</span></div>
+        <div class="stack">Rails · Docker · Git/GitHub</div>
+        <ul><li>Rails-based dictionary and linguistic research platform, live at <a class="link" href="https://lexiqamus.com/lexiqamus">lexiqamus.com/lexiqamus</a>.</li></ul>
+      </div>
+      <div class="entry">
+        <div class="row"><span class="title">AI-Based Brain Stroke Detection System</span><span class="date">Final-year project</span></div>
+        <div class="stack">Django · PostgreSQL · PyTorch · Deep Learning</div>
+        <ul>
+          <li>Multi-modal diagnosis system classifying brain CT scans as Normal, Ischemic, or Hemorrhagic using an ensemble of DenseNet-121, ConvNeXt-Base, and Swin Transformer (<b>95.2% accuracy</b>), plus a Random Forest clinical model.</li>
+          <li>Developed the full Django application, including doctor/admin roles, patient management, CT upload, and diagnosis history.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="row"><span class="title">E-commerce Analytics Dashboard</span><span class="date">Rails project</span></div>
+        <div class="stack">Rails · Bootstrap 5 · Stimulus</div>
+        <ul><li>Admin and seller dashboards tracking revenue, orders, and inventory across isolated stores, with low-stock alerts and role-based views.</li></ul>
+      </div>
+    </section>
 
-      <aside>
-        <section>
-          <h2>Skills</h2>
-          <div class="group"><div class="group-label">AI-driven tools</div><div class="chips ai"><span class="chip">Cursor</span><span class="chip">Claude</span><span class="chip">Codex</span></div></div>
-          <div class="group"><div class="group-label">Languages &amp; frameworks</div><div class="chips"><span class="chip">Ruby</span><span class="chip">Rails</span><span class="chip">Laravel</span><span class="chip">Django</span><span class="chip">JavaScript</span></div></div>
-          <div class="group"><div class="group-label">Frontend</div><div class="chips"><span class="chip">HTML/CSS</span><span class="chip">Bootstrap 5</span><span class="chip">ERB</span><span class="chip">Stimulus</span></div></div>
-          <div class="group"><div class="group-label">Databases &amp; tools</div><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">Docker</span><span class="chip">Git/GitHub</span><span class="chip">REST APIs</span></div></div>
-          <div class="group"><div class="group-label">AI/ML (project work)</div><div class="chips"><span class="chip">PyTorch</span><span class="chip">DenseNet-121</span><span class="chip">ConvNeXt-Base</span><span class="chip">Swin Transformer</span></div></div>
-        </section>
-
-        <section>
-          <h2>Education</h2>
-          <div class="edu"><b>BS Software Engineering</b><span>Lahore Garrison University</span><em>2026</em></div>
-          <div class="edu"><b>FSc Pre-Engineering</b><span>Punjab Group of Colleges, Sialkot</span><em>2022</em></div>
-        </section>
-
-        <section>
-          <h2>Core competencies</h2>
-          <ul class="b">
-            <li>Full-Stack Development</li>
-            <li>MVC Architecture</li>
-            <li>REST APIs</li>
-            <li>Authentication &amp; Authorization</li>
-            <li>Multi-Tenant Applications</li>
-            <li>Debugging &amp; Performance</li>
-          </ul>
-        </section>
-      </aside>
-    </div>
+    <section>
+      <h2>Education</h2>
+      <div class="entry"><div class="row"><span class="title">BS Software Engineering <span class="org">· Lahore Garrison University</span></span><span class="date">2026</span></div></div>
+      <div class="entry"><div class="row"><span class="title">FSc Pre-Engineering <span class="org">· Punjab Group of Colleges, Sialkot</span></span><span class="date">2022</span></div></div>
+    </section>
   </div>
 </body>
 </html>
