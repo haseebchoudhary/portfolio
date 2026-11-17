@@ -12,16 +12,15 @@ export const person = {
   cvPath: `${import.meta.env.BASE_URL}cv.pdf`,
   photo: `${import.meta.env.BASE_URL}profile/photo.png`,
   photoAlt: 'Portrait of Haseeb Choudhary',
-  profileLine: 'Evolving Bits · LexiQamus · BuildLQ',
-  profileStack: 'Rails · PostgreSQL · Stimulus · Docker',
+  profileLine: 'Professional work at Evolving Bits on LexiQamus and BuildLQ.',
+  profileStack: 'Stack includes Rails, PostgreSQL, Stimulus, and Docker.',
   availability: 'Open to full-time roles and freelance projects.',
   revision: 'November 2026',
 }
 
 export const hero = {
-  fact: 'Pakistan · LexiQamus · BuildLQ · Rails',
-  headline: 'Ruby on Rails developer for production web applications.',
-  lede: 'I build and maintain production apps across backend architecture, authentication, search, APIs, and responsive frontends—including LexiQamus and the BuildLQ digitization program for Ottoman dictionaries, plus multi-tenant e-commerce. I use AI-assisted tools such as Cursor and Claude with clear prompts, human review, and the same standards as any production change.',
+  headline: 'I build the Rails behind LexiQamus, a searchable Ottoman Turkish dictionary.',
+  lede: 'LexiQamus is the live research site for Ottoman Turkish; BuildLQ is the digitization program behind it. I own Rails features on production—search, decoder flows, auth, and integrations.',
 }
 
 // Verified via GitHub search API, November 2026.
@@ -122,7 +121,6 @@ export const experience = [
       'Develop and maintain LexiQamus 3.0 — a Rails dictionary and linguistic research platform — including BuildLQ-related digitization flows (source pages, smart results, citations).',
       'Own authentication, advanced search, Word Decoder, Redhouse search, CMS and admin, and API integrations on the production stack.',
       'Contribute on evolvingbits/BuildLQ (220 pull requests) and evolvingbits/LexiQamus (23 pull requests).',
-      'Use Cursor and Claude for research spikes, refactors, and documentation drafts; every change is reviewed and tested like hand-written code.',
     ],
   },
   {
@@ -160,7 +158,7 @@ export const skills = [
   },
   {
     group: 'Frontend',
-    items: ['React.js', 'HTML and CSS', 'Bootstrap 5', 'ERB', 'Stimulus'],
+    items: ['HTML and CSS', 'Bootstrap 5', 'ERB', 'Stimulus'],
   },
   {
     group: 'Databases and tools',
@@ -179,16 +177,6 @@ export const skills = [
     group: 'AI and ML (project work)',
     items: ['PyTorch', 'DenseNet-121', 'ConvNeXt-Base', 'Swin Transformer'],
   },
-  {
-    group: 'Core competencies',
-    items: [
-      'Full-stack development',
-      'MVC architecture',
-      'Authentication and authorization',
-      'Multi-tenant applications',
-      'Debugging and performance',
-    ],
-  },
 ]
 
 export const projects = [
@@ -196,7 +184,7 @@ export const projects = [
     id: 'lexiqamus',
     name: 'LexiQamus & BuildLQ',
     summary: 'Production Rails platform and dictionary digitization for Ottoman Turkish.',
-    kind: 'Professional work at Evolving Bits · private GitHub',
+    kind: { scope: 'Professional work at Evolving Bits', repo: 'private GitHub' },
     stack: ['Ruby on Rails', 'PostgreSQL', 'Docker', 'Stimulus', 'ERB', 'PHP integrations'],
     context:
       'LexiQamus is the live product at lexiqamus.com. BuildLQ is the digitization program behind LQ-Digital standards: preserved links to original scans, verified data, and smart parsing (entries, sub-entries, related words). I contribute on employer private repositories.',
@@ -214,7 +202,7 @@ export const projects = [
     id: 'stroke-ai',
     name: 'AI-Based Brain Stroke Detection System',
     summary: 'Multi-modal brain CT classification for Normal, Ischemic, and Hemorrhagic cases.',
-    kind: 'Final-year project · GitHub',
+    kind: { scope: 'Final-year project', repo: 'GitHub' },
     stack: ['Django', 'PostgreSQL', 'PyTorch', 'DenseNet-121', 'ConvNeXt-Base', 'Swin Transformer'],
     context:
       'Final-year project: a Django application that classifies brain CT scans using deep learning, with doctor and admin workflows. Source is on GitHub with phased feature branches.',
@@ -228,20 +216,5 @@ export const projects = [
     },
     repoStats: { commits: 147, branches: 28, private: true },
     diagram: 'CT upload → preprocessing → ensemble + clinical model → diagnosis label → Django app',
-  },
-  {
-    id: 'analytics-dashboard',
-    name: 'E-commerce Analytics Dashboard',
-    summary: 'Admin and seller dashboards for multi-store revenue, orders, and inventory.',
-    kind: 'Rails project',
-    stack: ['Ruby on Rails', 'Bootstrap 5', 'Stimulus', 'PostgreSQL'],
-    context:
-      'Dashboards for isolated stores from the Evolving Bits intern multi-tenant platform.',
-    built: [
-      'Admin and seller dashboards tracking revenue, orders, and inventory across isolated stores.',
-      'Low-stock alerts and role-based views built with Bootstrap 5 and Stimulus.',
-    ],
-    link: null,
-    diagram: 'Store data → Rails → dashboards → admin / seller roles',
   },
 ]

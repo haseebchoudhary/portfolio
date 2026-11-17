@@ -1,11 +1,3 @@
-const KICKERS = {
-  about: '01',
-  experience: '02',
-  projects: '03',
-  skills: '04',
-  contact: '05',
-}
-
 export default function Section({ id, title, children, tall = false }) {
   return (
     <section
@@ -15,7 +7,6 @@ export default function Section({ id, title, children, tall = false }) {
     >
       <div className="wrap section__grid">
         <header className="section__head">
-          <p className="section__kicker">{KICKERS[id] ?? ''}</p>
           <h2 className="section__title" id={`${id}-title`}>
             {title}
           </h2>

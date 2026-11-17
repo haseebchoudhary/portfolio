@@ -1,16 +1,12 @@
-import ArchDiagram from './ArchDiagram'
-import HeroShader from './HeroShader'
-import { hero, person } from '../data/cv'
+import { hero, lexiqamusSite, person } from '../data/cv'
+
+const heroShot = `${import.meta.env.BASE_URL}projects/lexiqamus-modal-hover.jpg`
 
 export default function Hero() {
   return (
     <section className="hero" id="top" aria-labelledby="hero-title">
-      <HeroShader />
       <div className="hero__inner wrap">
         <div className="hero__text">
-          <p className="hero__fact">
-            <span className="hero__pill">{hero.fact}</span>
-          </p>
           <h1 className="hero__title" id="hero-title">
             {hero.headline}
           </h1>
@@ -19,16 +15,32 @@ export default function Hero() {
             <a className="btn" href={`mailto:${person.email}`}>
               Email me
             </a>
-            <a className="btn btn--ghost" href={person.cvPath} download>
-              Download CV
-            </a>
           </div>
-          <p className="hero__availability">{person.availability}</p>
+          <p className="hero__availability">
+            {person.location}. {person.availability}
+          </p>
         </div>
         <div className="hero__visual">
-          <div className="app-frame">
-            <ArchDiagram />
-          </div>
+          <figure className="app-frame hero__shot">
+            <img
+              className="hero__shot-img"
+              src={heroShot}
+              alt={
+                lexiqamusSite.gallery?.find((p) => p.src.includes('modal-hover'))?.alt ??
+                lexiqamusSite.imageAlt
+              }
+              width={1420}
+              height={900}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+            />
+            <figcaption className="hero__shot-caption">
+              <a href={lexiqamusSite.href} target="_blank" rel="noreferrer noopener">
+                {lexiqamusSite.label}
+              </a>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>

@@ -1,16 +1,41 @@
+import { useEffect, useRef } from 'react'
 import { person } from '../data/cv'
 
 const links = [
+  ['Projects', '#projects'],
   ['About', '#about'],
   ['Experience', '#experience'],
-  ['Projects', '#projects'],
   ['Skills', '#skills'],
   ['Contact', '#contact'],
 ]
 
+function syncNavHeight(el) {
+  if (!el) return
+  const height = Math.ceil(el.getBoundingClientRect().height)
+  document.documentElement.style.setProperty('--nav-h', `${height}px`)
+}
+
 export default function Nav() {
+  const headerRef = useRef(null)
+
+  useEffect(() => {
+    const el = headerRef.current
+    if (!el) return undefined
+
+    const onResize = () => syncNavHeight(el)
+    syncNavHeight(el)
+    const ro = new ResizeObserver(onResize)
+    ro.observe(el)
+    window.addEventListener('resize', onResize)
+
+    return () => {
+      ro.disconnect()
+      window.removeEventListener('resize', onResize)
+    }
+  }, [])
+
   return (
-    <header className="nav">
+    <header className="nav" ref={headerRef}>
       <div className="wrap nav__inner">
         <a className="nav__name" href="#top">
           <img

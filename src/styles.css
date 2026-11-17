@@ -37,7 +37,7 @@
   --display: 'Host Grotesk', system-ui, sans-serif;
   --text: 'Newsreader', Georgia, serif;
   --mono: ui-monospace, 'Cascadia Code', monospace;
-  --display-weight: 560;
+  --display-weight: 700;
   --display-tracking: -0.02em;
   --display-tracking-xl: -0.035em;
 
@@ -48,13 +48,13 @@
   --padb: clamp(52px, 8vh, 96px);
   --head-gap: clamp(32px, 5vw, 48px);
   --r-btn: 2px;
-}
 
-/* Ensure minimum touch target for mobile */
-@media (max-width: 768px) {
-  :root {
-    --nav-h: 64px;
-  }
+  --type-1: 0.8125rem;
+  --type-2: 0.875rem;
+  --type-3: 1rem;
+  --type-4: 1.0625rem;
+  --type-5: 1.125rem;
+  --type-6: 1.25rem;
 }
 
 *,
@@ -71,14 +71,10 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--paper);
-  background-image:
-    radial-gradient(ellipse 80% 50% at 8% -12%, var(--p-accent-glow), transparent 58%),
-    radial-gradient(ellipse 55% 40% at 100% 0%, var(--p-warm), transparent 50%);
-  background-attachment: fixed;
+  background-color: var(--bg);
   color: var(--ink);
   font-family: var(--text);
-  font-size: 1.0625rem;
+  font-size: var(--type-4);
   line-height: 1.7;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
@@ -228,7 +224,7 @@ a:focus-visible {
 .btn--small {
   min-height: 44px;
   padding: 0 16px;
-  font-size: 0.9375rem;
+  font-size: var(--type-4);
 }
 
 /* Nav */
@@ -247,7 +243,7 @@ a:focus-visible {
   display: flex;
   align-items: center;
   gap: 24px;
-  min-height: var(--nav-h);
+  min-height: 64px;
 }
 
 .nav__name {
@@ -287,7 +283,7 @@ a:focus-visible {
   padding: 8px 12px;
   font-family: var(--display);
   font-weight: 500;
-  font-size: 0.9375rem;
+  font-size: var(--type-4);
   text-decoration: none;
   white-space: nowrap;
   border-radius: 2px;
@@ -332,25 +328,10 @@ a:focus-visible {
 /* Hero */
 .hero {
   position: relative;
-  isolation: isolate;
   min-height: calc(100svh - var(--nav-h));
   padding-block: clamp(40px, 6vw, 72px);
   overflow: clip;
-  background: linear-gradient(180deg, var(--surface) 0%, var(--paper) 72%);
-}
-
-.hero__shader {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.hero__shader[data-fx-fallback],
-.hero__shader--still {
-  background:
-    radial-gradient(ellipse 90% 55% at 24% 30%, var(--p-accent-glow), transparent 68%),
-    radial-gradient(circle at 78% 20%, rgba(20, 20, 20, 0.03), transparent 52%);
+  background: var(--bg);
 }
 
 .hero__inner {
@@ -361,24 +342,6 @@ a:focus-visible {
   gap: clamp(24px, 4vw, 56px);
   align-items: center;
   min-height: calc(100svh - var(--nav-h) - clamp(80px, 12vw, 144px));
-}
-
-.hero__fact {
-  margin: 0 0 16px;
-}
-
-.hero__pill {
-  display: inline-block;
-  padding: 6px 12px;
-  border: 1px solid var(--rule-strong);
-  border-radius: var(--r-btn);
-  background: var(--paper);
-  font-family: var(--display);
-  font-size: 0.75rem;
-  font-weight: 560;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
 }
 
 .hero__title {
@@ -423,13 +386,25 @@ a:focus-visible {
   box-shadow: var(--shadow);
 }
 
-.app-frame::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(145deg, rgb(255 255 255 / 0.7), transparent 55%);
-  border-radius: inherit;
-  pointer-events: none;
+.hero__shot {
+  margin: 0;
+}
+
+.hero__shot-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1420 / 900;
+  border-radius: var(--r-btn);
+  border: 1px solid var(--rule);
+}
+
+.hero__shot-caption {
+  margin-top: 12px;
+  font-family: var(--display);
+  font-size: var(--type-4);
+  font-weight: 500;
+  text-align: center;
 }
 
 @media (max-width: 960px) {
@@ -497,7 +472,6 @@ a:focus-visible {
 
 .arch__node text {
   font-family: var(--display);
-  font-stretch: 90%;
   font-weight: 600;
   font-size: 12.5px;
   fill: var(--ink);
@@ -515,7 +489,7 @@ a:focus-visible {
 .arch__caption {
   margin-top: 12px;
   max-width: 34rem;
-  font-size: 0.9375rem;
+  font-size: var(--type-4);
   color: var(--ink-2);
 }
 
@@ -548,24 +522,6 @@ a:focus-visible {
   top: calc(var(--nav-h) + 20px);
 }
 
-.section__kicker {
-  margin: 0 0 10px;
-  font-family: var(--display);
-  font-weight: 560;
-  font-size: 0.8125rem;
-  letter-spacing: 0.14em;
-  color: color-mix(in oklab, var(--accent) 78%, var(--ink-2));
-}
-
-.section__kicker::after {
-  content: '';
-  display: block;
-  width: 2.5rem;
-  height: 1px;
-  margin-top: 12px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-}
-
 .section__title {
   font-family: var(--display);
   font-weight: var(--display-weight);
@@ -577,6 +533,10 @@ a:focus-visible {
 
 .section__body {
   min-width: 0;
+}
+
+main .section:nth-of-type(even) {
+  background: var(--surface);
 }
 
 @media (max-width: 800px) {
@@ -671,14 +631,14 @@ a:focus-visible {
 
 .about__profile-role {
   margin-top: 6px;
-  font-size: 0.9rem;
+  font-size: var(--type-3);
   line-height: 1.45;
   color: var(--ink-2);
 }
 
 .about__profile-line {
   margin-top: 12px;
-  font-size: 0.82rem;
+  font-size: var(--type-2);
   line-height: 1.5;
   color: var(--muted);
 }
@@ -688,15 +648,15 @@ a:focus-visible {
   padding-top: 12px;
   border-top: 1px solid var(--rule);
   font-family: var(--display);
-  font-size: 0.78rem;
-  font-weight: 560;
+  font-size: var(--type-1);
+  font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--accent);
 }
 
 .about__profile-availability {
   margin-top: 10px;
-  font-size: 0.82rem;
+  font-size: var(--type-2);
   line-height: 1.45;
   color: var(--ink-2);
 }
@@ -756,7 +716,7 @@ a:focus-visible {
   gap: 12px;
   padding: 9px 14px;
   border-top: 1px solid var(--rule);
-  font-size: 0.9375rem;
+  font-size: var(--type-4);
   line-height: 1.4;
   transition: background-color 200ms ease;
 }
@@ -771,7 +731,6 @@ a:focus-visible {
 
 .facts dt {
   font-family: var(--display);
-  font-stretch: 90%;
   font-weight: 600;
 }
 
@@ -839,17 +798,15 @@ a:focus-visible {
 
 .timeline__period {
   font-family: var(--display);
-  font-stretch: 90%;
-  font-weight: 560;
-  font-size: 0.9375rem;
+  font-weight: 600;
+  font-size: var(--type-4);
   color: var(--ink-2);
   padding-top: 4px;
 }
 
 .timeline__role {
   font-family: var(--display);
-  font-stretch: 78%;
-  font-weight: 720;
+  font-weight: 700;
   font-size: 1.625rem;
   line-height: 1.15;
 }
@@ -946,8 +903,8 @@ a:focus-visible {
 .project__name {
   grid-area: name;
   font-family: var(--display);
-  font-stretch: 74%;
-  font-weight: 760;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   font-size: clamp(1.75rem, 3.2vw, 2.5rem);
   line-height: 1.05;
   transition: color 0.18s ease;
@@ -962,9 +919,8 @@ a:focus-visible {
 .project__kind {
   grid-area: kind;
   font-family: var(--display);
-  font-stretch: 90%;
   font-weight: 500;
-  font-size: 0.9375rem;
+  font-size: var(--type-4);
 }
 
 .project__icon {
@@ -1072,8 +1028,8 @@ a:focus-visible {
   border-radius: var(--r-btn);
   background: rgb(255 255 255 / 0.92);
   font-family: var(--display);
-  font-size: 0.75rem;
-  font-weight: 560;
+  font-size: var(--type-1);
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.06em;
   color: var(--ink-2);
@@ -1242,7 +1198,7 @@ a:focus-visible {
   border-radius: var(--r-btn);
   background: var(--surface);
   font-family: var(--mono);
-  font-size: 0.75rem;
+  font-size: var(--type-1);
   transition: background-color 200ms ease, border-color 200ms ease;
 }
 
@@ -1267,7 +1223,6 @@ a:focus-visible {
 .project__details h4,
 .project__stack h4 {
   font-family: var(--display);
-  font-stretch: 90%;
   font-weight: 650;
   font-size: 1rem;
   margin-bottom: 6px;
@@ -1302,7 +1257,7 @@ a:focus-visible {
 
 .project__details p a {
   font-family: var(--display);
-  font-weight: 560;
+  font-weight: 600;
 }
 
 .project__stack li {
@@ -1327,8 +1282,7 @@ a:focus-visible {
 
 .skills__group {
   font-family: var(--display);
-  font-stretch: 80%;
-  font-weight: 720;
+  font-weight: 700;
   font-size: 1.25rem;
 }
 
@@ -1355,11 +1309,10 @@ a:focus-visible {
   display: block;
   margin-top: 20px;
   font-family: var(--display);
-  font-stretch: 72%;
-  font-weight: 780;
+  font-weight: 800;
   font-size: clamp(1.75rem, 5vw, 3.75rem);
   line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   text-decoration-thickness: 3px;
   text-underline-offset: 0.12em;
   overflow-wrap: anywhere;
@@ -1369,7 +1322,7 @@ a:focus-visible {
   display: block;
   margin-top: 12px;
   font-family: var(--display);
-  font-weight: 560;
+  font-weight: 600;
   font-size: clamp(1.125rem, 2.5vw, 1.5rem);
   letter-spacing: 0.02em;
   color: var(--ink-2);
@@ -1393,56 +1346,19 @@ a:focus-visible {
   gap: 8px 32px;
   margin-top: 28px;
   font-family: var(--display);
-  font-stretch: 90%;
   font-weight: 500;
 }
 
-.contact__repos {
-  margin-top: 36px;
-  padding-top: 28px;
+.project__arch {
+  margin-top: 32px;
+  padding-top: 24px;
   border-top: 1px solid var(--rule);
-  max-width: 36rem;
-}
-
-.contact__repos-title {
-  font-family: var(--display);
-  font-size: 1.05rem;
-  font-weight: var(--display-weight);
-  margin-bottom: 16px;
-}
-
-.repo-list {
-  display: grid;
-  gap: 18px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.repo-list li {
-  padding-left: 14px;
-  border-left: 2px solid var(--accent);
-}
-
-.repo-list__stats {
-  display: block;
-  margin-top: 4px;
-  font-size: 0.82rem;
-  font-variant-numeric: tabular-nums;
-  color: var(--ink-2);
-}
-
-.repo-list__note {
-  display: block;
-  margin-top: 6px;
-  font-size: 0.85rem;
-  line-height: 1.45;
 }
 
 .project__repo-stats,
 .project__contrib {
   margin-top: 12px;
-  font-size: 0.9rem;
+  font-size: var(--type-3);
   line-height: 1.45;
 }
 

@@ -1,41 +1,27 @@
 import { useEffect, useRef, useState } from 'react'
 import { usePrefersReducedMotion } from '../hooks'
 
-// Three layers of a typical Rails + React system, drawn in 3D and rotated in
-// JavaScript. Coordinates are world units; x and z run across a layer, y is
-// the layer height.
+// LexiQamus production stack (technologies named in cv.js), drawn in 3D.
 const LAYERS = [
   { id: 'client', y: -1.9, label: 'Client' },
   { id: 'app', y: 0, label: 'Application' },
-  { id: 'data', y: 1.9, label: 'Data and services' },
+  { id: 'data', y: 1.9, label: 'Data and ops' },
 ]
 
 const NODES = [
-  { id: 'react', label: 'React dashboard', x: -2.0, y: -1.9, z: 0.8, w: 128 },
-  { id: 'stimulus', label: 'Stimulus and ERB', x: 1.9, y: -1.9, z: -0.9, w: 128 },
-  { id: 'auth', label: 'Devise and Pundit', x: -2.3, y: 0, z: -1.0, w: 132 },
+  { id: 'stimulus', label: 'Stimulus and ERB', x: 0, y: -1.9, z: 0, w: 140 },
   { id: 'rails', label: 'Rails application', x: 0, y: 0, z: 0.2, w: 140, hero: true },
-  { id: 'cable', label: 'ActionCable', x: 2.1, y: 0, z: 1.0, w: 108 },
-  { id: 'pg', label: 'PostgreSQL', x: -2.2, y: 1.9, z: 0.6, w: 104 },
-  { id: 'redis', label: 'Redis', x: 0.2, y: 1.9, z: -1.9, w: 84 },
-  { id: 'sidekiq', label: 'Sidekiq', x: 2.0, y: 1.9, z: 0.2, w: 96 },
-  { id: 'ai', label: 'Vision and ML APIs', x: -0.2, y: 1.9, z: 2.0, w: 136 },
+  { id: 'pg', label: 'PostgreSQL', x: -2.0, y: 1.9, z: 0.4, w: 104 },
+  { id: 'docker', label: 'Docker', x: 0.3, y: 1.9, z: -1.2, w: 88 },
+  { id: 'php', label: 'PHP integrations', x: 2.0, y: 1.9, z: 0.6, w: 136 },
 ]
 
 const EDGES = [
-  { from: 'react', to: 'rails' },
   { from: 'stimulus', to: 'rails' },
-  { from: 'rails', to: 'auth' },
-  { from: 'rails', to: 'cable' },
-  { from: 'cable', to: 'react', dashed: true },
   { from: 'rails', to: 'pg' },
-  { from: 'rails', to: 'redis' },
-  { from: 'rails', to: 'sidekiq' },
-  { from: 'sidekiq', to: 'redis' },
-  { from: 'sidekiq', to: 'ai' },
+  { from: 'rails', to: 'docker' },
+  { from: 'rails', to: 'php' },
 ]
-
-const NODE_BY_ID = Object.fromEntries(NODES.map((n) => [n.id, n]))
 
 const VIEW_W = 800
 const VIEW_H = 640
@@ -153,12 +139,11 @@ export default function ArchDiagram() {
           role="img"
           aria-labelledby="arch-title arch-desc"
         >
-          <title id="arch-title">Architecture of a Rails and React system</title>
+          <title id="arch-title">LexiQamus production stack</title>
           <desc id="arch-desc">
-            A rotating three-layer diagram. The client layer holds a React dashboard and
-            Stimulus views. The application layer holds the Rails app, authentication and
-            ActionCable. The data layer holds PostgreSQL, Redis, Sidekiq and external vision
-            and machine learning APIs.
+            A rotating three-layer diagram. The client layer uses Stimulus and ERB. The
+            application layer is Rails. The data and ops layer includes PostgreSQL, Docker,
+            and PHP integrations.
           </desc>
 
           {plates.map((plate) => (

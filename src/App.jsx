@@ -10,15 +10,15 @@ import { person } from './data/cv'
 export default function App() {
   return (
     <>
-      <a className="skip" href="#about">
+      <a className="skip" href="#projects">
         Skip to content
       </a>
       <Nav />
       <main>
         <Hero />
+        <Projects />
         <About />
         <Experience />
-        <Projects />
         <Skills />
         <Contact />
       </main>

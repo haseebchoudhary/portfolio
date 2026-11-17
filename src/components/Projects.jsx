@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Section from './Section'
+import ArchDiagram from './ArchDiagram'
 import { projects } from '../data/cv'
 import ProjectGallery from './ProjectGallery'
 
@@ -48,7 +49,17 @@ function Project({ project, open, onToggle }) {
         >
           <span className="project__name">{project.name}</span>
           <span className="project__summary">{project.summary}</span>
-          <span className="project__kind">{project.kind}</span>
+          <span className="project__kind">
+            {typeof project.kind === 'string' ? (
+              project.kind
+            ) : (
+              <>
+                {project.kind.scope}
+                <span className="project__kind-sep">. </span>
+                {project.kind.repo}
+              </>
+            )}
+          </span>
           <span className="project__icon" aria-hidden="true" />
         </button>
       </h3>
@@ -81,11 +92,18 @@ function Project({ project, open, onToggle }) {
               <ul className="project__contrib">
                 {project.contributions.map((repo) => (
                   <li key={repo.name}>
-                    <a href={repo.pullsUrl} target="_blank" rel="noreferrer noopener">
-                      evolvingbits/{repo.name}
-                    </a>
+                    {repo.private ? (
+                      <span>
+                        evolvingbits/{repo.name}
+                      </span>
+                    ) : (
+                      <a href={repo.pullsUrl} target="_blank" rel="noreferrer noopener">
+                        evolvingbits/{repo.name}
+                      </a>
+                    )}
                     {' — '}
                     <strong>{repo.pullRequests}</strong> pull requests
+                    {repo.private ? ' · private repository' : ''}
                   </li>
                 ))}
               </ul>
@@ -100,18 +118,22 @@ function Project({ project, open, onToggle }) {
                 ) : (
                   <>
                     <strong>{project.repoStats.branches} branches</strong>
-                    {' · '}
+                    {', '}
                     <strong>{project.repoStats.commits} commits</strong>
-                    {project.repoStats.private ? ' (private repo)' : ' on default branch'}
+                    {project.repoStats.private ? ' · private repository' : ' on default branch'}
                   </>
                 )}
               </p>
             )}
             {project.link && (
               <p>
-                <a href={project.link.href} target="_blank" rel="noreferrer noopener">
-                  {project.link.label}
-                </a>
+                {project.repoStats?.private ? (
+                  project.link.label
+                ) : (
+                  <a href={project.link.href} target="_blank" rel="noreferrer noopener">
+                    {project.link.label}
+                  </a>
+                )}
               </p>
             )}
             </div>
@@ -124,6 +146,11 @@ function Project({ project, open, onToggle }) {
               </ul>
             </div>
           </div>
+          {project.id === 'lexiqamus' ? (
+            <div className="project__arch">
+              <ArchDiagram />
+            </div>
+          ) : null}
         </div>
         ) : null}
       </div>
